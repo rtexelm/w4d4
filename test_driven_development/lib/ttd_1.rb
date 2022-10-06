@@ -20,7 +20,7 @@ class Array
     end
 
     def my_transpose
-        # return self if self.empty?
+        return self if self.empty?
         raise "2D array must be square" if !self.all?{|sub| sub.length == self.length}
         result = Array.new(self.length) {Array.new(self.length)}
         (0...self.length).each do |i|
@@ -30,5 +30,19 @@ class Array
         end
         result
     end
+end
+
+def stock_picker(stocks)
+    result = 0
+    pair = nil
+    (0...stocks.length-1).each do |i|
+        (i+1...stocks.length).each do |j|
+            if stocks[j] - stocks[i] > result
+                result = stocks[j] - stocks[i]
+                pair = [i, j]
+            end
+        end
+    end
+    pair
 end
 
