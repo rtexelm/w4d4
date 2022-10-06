@@ -30,30 +30,32 @@ end
 
 
 describe Array do
-    subject(:array) {[
+    let(:empty_array) {[]}
+
+    let(:rectangle_array) {[
+        [0, 1, 2],
+        [3, 4, 5]
+    ]}
+
+    let(:square_array) {[
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8]
-        ]}
-    subject(:array2) {[
-        [0, 1, 2],
-        [3, 4, 5]
-        ]}
-    subject(:array3) {[]}
+    ]}
 
 
     describe "#my_transpose" do
 
         it "should return itself when it is an empty array" do
-            expect(array3.my_transpose).to eq([])
+            expect(empty_array.my_transpose).to eq([])
         end
 
         it "should accept a square 2d array" do
-            expect{array2.my_transpose}.to raise_error("2D array must be square")
+            expect{rectangle_array.my_transpose}.to raise_error("2D array must be square")
         end
 
         it "should return a new 2d array with the rows and cols switched" do
-            expect(array.my_transpose).to eq([
+            expect(square_array.my_transpose).to eq([
                                                 [0, 3, 6],
                                                 [1, 4, 7],
                                                 [2, 5, 8]
